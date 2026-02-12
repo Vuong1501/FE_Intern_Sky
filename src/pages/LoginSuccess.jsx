@@ -26,13 +26,8 @@ function LoginSuccess() {
         
         localStorage.setItem("user", JSON.stringify(userData));
 
-        // Role Check (Case insensitive)
-        const role = userData.role ? userData.role.toLowerCase() : "";
-        if (role === "hr" || role === "admin") {
-          navigate("/hr-dashboard");
-        } else {
-          navigate("/home");
-        }
+        // Redirect to Dashboard (Dashboard handles role-based view)
+        navigate("/dashboard");
       })
       .catch((err) => {
         console.error("Login failed:", err);
